@@ -57,7 +57,7 @@ public class CustomCornerTextView extends View {
     public CustomCornerTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CustomCornerTextView );
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CustomCornerTextView);
 
         mContent = array.getString(R.styleable.CustomCornerTextView_text);
         mTextSize = array.getDimension(R.styleable.CustomCornerTextView_text_size, 48f); // 默认 14sp
@@ -88,7 +88,7 @@ public class CustomCornerTextView extends View {
         mRect = new Rect();
         mPaint.getTextBounds(mContent, 0, mContent.length(), mRect);
         if (mCornerRadius != 0) {
-            setCornerRadius(mCornerRadius, mCornerRadius, mCornerRadius, mCornerRadius);
+            setCornerRadius(mCornerRadius);
         } else {
             setCornerRadius(mTopLeftRadius, mTopRightRadius, mBottomLeftRadius, mBottomRightRadius);
         }
@@ -141,10 +141,10 @@ public class CustomCornerTextView extends View {
                 drawWidth = widthSize;
                 break;
             case MeasureSpec.AT_MOST:
-                drawWidth = getPaddingLeft() + mRect.width() + getPaddingRight() + (int) (2 * mBorderWidth) + 10;
+                drawWidth = getPaddingLeft() + mRect.width() + getPaddingRight() + (int) (2 * mBorderWidth) + dp2px(3);
                 break;
             case MeasureSpec.UNSPECIFIED:
-                drawWidth = getPaddingLeft() + mRect.width() + getPaddingRight() + (int) (2 * mBorderWidth) + 10;
+                drawWidth = getPaddingLeft() + mRect.width() + getPaddingRight() + (int) (2 * mBorderWidth) + dp2px(3);
                 break;
         }
         Log.d("====msg  getDrawWidth", "getPaddingLeft: " + getPaddingLeft() + " ,getPaddingRight : " + getPaddingRight());
@@ -181,7 +181,6 @@ public class CustomCornerTextView extends View {
 
     public void setCornerRadius(float radius) {
         this.setCornerRadius(radius, radius, radius, radius);
-
     }
 
     /**
@@ -204,5 +203,23 @@ public class CustomCornerTextView extends View {
         drawable.setStroke((int) mBorderWidth, mBorderColor);
         drawable.setColor(mBgColor);
         this.setBackgroundDrawable(drawable);
+    }
+
+    /**
+     * @param value
+     * @return
+     */
+    private int dp2px(int value) {
+        float v = getContext().getResources().getDisplayMetrics().density;
+        return (int) (v * value + 0.5f);
+    }
+
+    /**
+     * @param value
+     * @return
+     */
+    private int sp2px(int value) {
+        float v = getContext().getResources().getDisplayMetrics().scaledDensity;
+        return (int) (v * value + 0.5f);
     }
 }
