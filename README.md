@@ -1,5 +1,6 @@
 # CustomCornerTextView
 自定义圆角矩形背景的TextView，去掉textview默认padding，解决字体对齐问题
+
 v1版本
 
 demo 示例
