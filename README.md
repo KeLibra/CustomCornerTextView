@@ -4,12 +4,13 @@ v1版本
 
 demo 示例
 
-![image] (https://github.com/KeLibra/CustomCornerTextView/blob/master/image/TIM%E5%9B%BE%E7%89%8720191210110546.jpg)
+![image](https://github.com/KeLibra/CustomCornerTextView/blob/master/image/TIM%E5%9B%BE%E7%89%8720191210111536.png)
 
 
 
 代码示例
 ···
+
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -71,4 +72,6 @@ demo 示例
         android:layout_marginTop="10dp"
         app:text="textview基线测试" />
 </ LinearLayout>
+
+
 ···
