@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,12 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:padding="10dp"
         app:bg_color="#fd5353"
-        app:text="测试测试测试"
-        app:text_size="14sp"
+        app:text="有背景色无边框无圆角，无内paddingtext"
         app:text_color="#ffffff"
-        />
+        app:text_size="14sp" />
 
     <test.kezy.com.customcornertextview.view.CustomCornerTextView
         android:layout_width="wrap_content"
@@ -30,39 +27,35 @@
         app:bg_color="#ffffff"
         app:border_color="#000000"
         app:corner_radius="12dp"
-        app:text="文字文字文字"
-        app:text_size="30sp"
-        app:radius_border_width="1dp"/>
+        app:radius_border_width="1dp"
+        app:text="有边框有圆角"
+        app:text_size="30sp" />
 
     <test.kezy.com.customcornertextview.view.CustomCornerTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:padding="4dp"
         app:bg_color="#f23c6c"
+        app:border_color="#0000ff"
+        app:radius_border_width="2dp"
         app:radius_bottom_left="0dp"
         app:radius_bottom_right="15dp"
         app:radius_top_left="15dp"
-        app:radius_top_right="15dp"
-        app:text="这啥这啥这啥这"
-        app:text_size="36sp"
+        app:radius_top_right="0dp"
+        app:text="有背景有边框有部分圆角"
         app:text_color="#ffffff"
-        app:border_color="#0000ff"
-        app:radius_border_width="5dp"/>
+        app:text_size="14sp" />
 
     <test.kezy.com.customcornertextview.view.CustomCornerTextView
-        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
-
+        android:layout_marginTop="10dp" />
 
     <test.kezy.com.customcornertextview.view.CustomCornerTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        app:text=" 长度长度长度长度长度 啊"
-        />
-
-
+        app:text="textview基线测试" />
 </LinearLayout>
