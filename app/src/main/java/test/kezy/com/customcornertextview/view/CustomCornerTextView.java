@@ -40,6 +40,17 @@ public class CustomCornerTextView extends View {
 
     private float mBorderWidth; // 边框线 粗细
 
+    /**
+     * <enum name="center" value="0"/>
+     * <enum name="top" value="1"/>
+     * <enum name="bottom" value="2"/>
+     * <enum name="left" value="3"/>
+     * <enum name="right" value="4"/>
+     * <enum name="center_horizontal" value="5"/>
+     * <enum name="center_vertical" value="6"/>
+     */
+    private int mGravity; // gravity
+
 
     private Paint mPaint; // 画笔
 
@@ -74,6 +85,8 @@ public class CustomCornerTextView extends View {
 
         mBorderWidth = array.getDimension(R.styleable.CustomCornerTextView_radius_border_width, 0); // 默认粗细
 
+
+        mGravity = array.getInt(R.styleable.CustomCornerTextView_gravity, -1); //默认无gravity
 
         array.recycle();
 
@@ -128,8 +141,8 @@ public class CustomCornerTextView extends View {
                 break;
         }
 
-        Log.v("====msg  getDrawHeight", "getPaddingTop: " + getPaddingTop() + " , getPaddingBottom : " + getPaddingBottom());
-        Log.d("====msg  getDrawHeight", "mRect.height(): " + mRect.height() + " , drawHeight : " + drawHeight);
+        Log.e("====msg  getDrawHeight", "getPaddingTop: " + getPaddingTop() + " , getPaddingBottom : " + getPaddingBottom());
+        Log.i("====msg  getDrawHeight", "mRect.height(): " + mRect.height() + " , drawHeight : " + drawHeight);
         return drawHeight;
     }
 
@@ -147,7 +160,7 @@ public class CustomCornerTextView extends View {
                 drawWidth = getPaddingLeft() + mRect.width() + getPaddingRight() + (int) (2 * mBorderWidth) + dp2px(3);
                 break;
         }
-        Log.d("====msg  getDrawWidth", "getPaddingLeft: " + getPaddingLeft() + " ,getPaddingRight : " + getPaddingRight());
+        Log.w("====msg  getDrawWidth", "getPaddingLeft: " + getPaddingLeft() + " ,getPaddingRight : " + getPaddingRight());
         return drawWidth;
 
     }
@@ -161,15 +174,40 @@ public class CustomCornerTextView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        // top 1 || left 3
+        float startX = 0;
+        float startY;
+
         // 计算基线
         Paint.FontMetricsInt fontMetricsInt = mPaint.getFontMetricsInt();
-        Log.d("====msg  onDraw", "fontMetricsInt.bottom : " + fontMetricsInt.bottom + " , fontMetricsInt.top: " + fontMetricsInt.top);
+        Log.e("====msg  onDraw 0000  ", "fontMetricsInt.bottom : " + fontMetricsInt.bottom + " , fontMetricsInt.top: " + fontMetricsInt.top);
         float dy = (fontMetricsInt.bottom - fontMetricsInt.top + getPaddingTop() - getPaddingBottom()) / 2 - fontMetricsInt.bottom;
-        float startY = getHeight() / 2 + dy;
+        Log.e("====msg  onDraw 0000  ", "dy : " + dy);
+//        startY = getHeight() / 2 + dy;
+        startY = mRect.height() / 2 + dy;
 
-        float startX = getPaddingLeft() + mBorderWidth;
+        // center
+        Log.e("====msg  onDraw 1111 ", "mGravity : " + mGravity);
+        Log.i("====msg 00 1111 ", "getMeasuredWidth  : " + getMeasuredWidth() + " ,,  getMeasuredHeight: " + getMeasuredHeight());
+        Log.d("====msg 00 2222 ", "mRect.width()  : " + mRect.width() + " ,,  mRect.height(): " + mRect.height());
+        if (mGravity == 0) {
+            startX = getMeasuredWidth() / 2 - mRect.width() / 2 + mBorderWidth;
+//            startY = getHeight();
+            startY = getHeight() / 2 + dy;
+        } else if (mGravity == 2) { // bottom
+            startY = getMeasuredHeight() - dy / 2;
+        } else if (mGravity == 4) { // right
+            startX = getMeasuredWidth() - mRect.width() + +mBorderWidth;
+        } else if (mGravity == 5) { // center_horizontal
+            startX = getMeasuredWidth() / 2 - mRect.width() / 2 + mBorderWidth;
+        } else if (mGravity == 6) { // center_vertical
+//            startY = getMeasuredHeight() / 2;
+            startY = getHeight() / 2 + dy;
+        } else {
+            startX = getPaddingLeft() + mBorderWidth;
+        }
 
-        Log.d("====msg  onDraw", "startX : " + startX + " , startY: " + startY);
+        Log.e("====msg  onDraw 3333 ", "startX : " + startX + " , startY: " + startY);
 
         canvas.drawText(mContent, startX, startY, mPaint);
     }

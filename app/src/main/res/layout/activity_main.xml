@@ -58,4 +58,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:text="textview基线测试" />
+
+    <test.kezy.com.customcornertextview.view.CustomCornerTextView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        app:bg_color="#fd5253"
+        app:gravity="center"
+        app:text="textview基线测试"
+        app:text_color="#ffffff" />
 </LinearLayout>

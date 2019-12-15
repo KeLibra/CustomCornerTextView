@@ -35,5 +35,15 @@
         <!--边框线 粗细-->
         <attr name="radius_border_width" format="dimension"></attr>
 
+        <attr name="gravity" format="enum">
+            <enum name="center" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="bottom" value="2"/>
+            <enum name="left" value="3"/>
+            <enum name="right" value="4"/>
+            <enum name="center_horizontal" value="5"/>
+            <enum name="center_vertical" value="6"/>
+        </attr>
+
     </declare-styleable>
 </resources>
