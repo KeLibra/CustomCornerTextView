@@ -11,15 +11,25 @@
         android:id="@+id/et_input"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_margin="4dp" />
+        android:layout_margin="4dp"
+        android:inputType="numberDecimal"/>
 
     <Button
-        android:id="@+id/btn_show"
+        android:id="@+id/btn_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:padding="2dp"
-        android:text="show"
+        android:text="数字增长效果"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btn_down"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:padding="2dp"
+        android:text="数字减少效果"
         android:textSize="16sp" />
 
     <test.kezy.com.customcornertextview.view.NumChangeTextView
