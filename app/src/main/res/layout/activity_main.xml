@@ -68,4 +68,12 @@
         app:gravity="center"
         app:text="textview基线测试"
         app:text_color="#ffffff" />
+
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="跳页" />
 </LinearLayout>
